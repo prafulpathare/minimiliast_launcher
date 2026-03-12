@@ -20,41 +20,42 @@
 16        android:extractNativeLibs="true"
 17        android:label="@string/app_name"
 17-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:9:9-41
-18        android:theme="@style/LauncherTheme" >
-18-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:10:9-45
-19        <activity
-19-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:12:9-28:20
-20            android:name="com.minimal.launcher.LauncherActivity"
-20-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:13:13-45
-21            android:clearTaskOnLaunch="true"
-21-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:19:13-45
-22            android:exported="true"
-22-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:14:13-36
-23            android:launchMode="singleTask"
-23-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:15:13-44
-24            android:resumeWhilePausing="true"
-24-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:17:13-46
-25            android:screenOrientation="portrait"
-25-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:18:13-49
-26            android:stateNotNeeded="true" >
-26-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:16:13-42
-27            <intent-filter>
-27-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:21:13-26:29
-28                <action android:name="android.intent.action.MAIN" />
-28-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:22:17-69
-28-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:22:25-66
-29
-30                <category android:name="android.intent.category.HOME" />
-30-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:23:17-73
-30-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:23:27-70
-31                <category android:name="android.intent.category.DEFAULT" />
-31-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:24:17-76
-31-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:24:27-73
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:25:17-77
-32-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:25:27-74
-33            </intent-filter>
-34        </activity>
-35    </application>
-36
-37</manifest>
+18        android:testOnly="true"
+19        android:theme="@style/LauncherTheme" >
+19-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:10:9-45
+20        <activity
+20-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:12:9-28:20
+21            android:name="com.minimal.launcher.LauncherActivity"
+21-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:13:13-45
+22            android:clearTaskOnLaunch="true"
+22-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:19:13-45
+23            android:exported="true"
+23-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:14:13-36
+24            android:launchMode="singleTask"
+24-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:15:13-44
+25            android:resumeWhilePausing="true"
+25-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:17:13-46
+26            android:screenOrientation="portrait"
+26-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:18:13-49
+27            android:stateNotNeeded="true" >
+27-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:16:13-42
+28            <intent-filter>
+28-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:21:13-26:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:22:17-69
+29-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:22:25-66
+30
+31                <category android:name="android.intent.category.HOME" />
+31-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:23:17-73
+31-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:23:27-70
+32                <category android:name="android.intent.category.DEFAULT" />
+32-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:24:17-76
+32-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:24:27-73
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:25:17-77
+33-->D:\ws\projects\MinimalLauncher\app\src\main\AndroidManifest.xml:25:27-74
+34            </intent-filter>
+35        </activity>
+36    </application>
+37
+38</manifest>

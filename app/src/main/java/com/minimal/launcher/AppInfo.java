@@ -6,8 +6,8 @@ public class AppInfo {
     public final String activityName;
 
     public AppInfo(String label, String packageName, String activityName) {
-        this.label = label;
-        this.packageName = packageName;
+        this.label        = label;
+        this.packageName  = packageName;
         this.activityName = activityName;
     }
 }

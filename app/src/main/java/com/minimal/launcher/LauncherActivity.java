@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -29,13 +31,15 @@ public class LauncherActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        listView = findViewById(R.id.app_list);
+        listView  = findViewById(R.id.app_list);
         searchBox = findViewById(R.id.search_box);
 
         loadApps();
 
         adapter = new AppAdapter(this, new ArrayList<>(allApps));
         listView.setAdapter(adapter);
+
+        applyTheme();
 
         listView.setOnItemClickListener((parent, view, position, id) -> {
             AppInfo app = adapter.getItem(position);
@@ -60,28 +64,23 @@ public class LauncherActivity extends Activity {
         });
 
         searchBox.requestFocus();
-        getWindow().setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
 
     private void loadApps() {
         PackageManager pm = getPackageManager();
-
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
         intent.addCategory(Intent.CATEGORY_LAUNCHER);
-
-        // MATCH_ALL ensures we get everything including disabled-by-default apps
         List<ResolveInfo> resolveInfos = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL);
 
         allApps.clear();
         for (ResolveInfo info : resolveInfos) {
-            String label = info.loadLabel(pm).toString().trim();
+            String label       = info.loadLabel(pm).toString().trim();
             String packageName = info.activityInfo.packageName;
             if (!packageName.equals(getPackageName())) {
-                allApps.add(new AppInfo(label, packageName,
-                        info.activityInfo.name));
+                allApps.add(new AppInfo(label, packageName, info.activityInfo.name));
             }
         }
-
         Collections.sort(allApps, (a, b) -> a.label.compareToIgnoreCase(b.label));
     }
 
@@ -93,7 +92,6 @@ public class LauncherActivity extends Activity {
         }
         adapter.updateList(filtered);
 
-        // Auto-launch if only one result
         if (filtered.size() == 1 && !lower.isEmpty()) {
             launchApp(filtered.get(0));
             searchBox.setText("");
@@ -113,6 +111,30 @@ public class LauncherActivity extends Activity {
         }
     }
 
+    private boolean isDarkTheme() {
+        int nightMode = getResources().getConfiguration().uiMode
+                & Configuration.UI_MODE_NIGHT_MASK;
+        return nightMode == Configuration.UI_MODE_NIGHT_YES;
+    }
+
+    private void applyTheme() {
+        boolean dark    = isDarkTheme();
+        int bg          = dark ? 0xFF000000 : 0xFFFFFFFF;
+        int textCol     = dark ? 0xFFDDDDDD : 0xFF111111;
+        int hintCol     = dark ? 0xFF555555 : 0xFFAAAAAA;
+        int searchBg    = dark ? 0xFF111111 : 0xFFEEEEEE;
+
+        findViewById(R.id.root_layout).setBackgroundColor(bg);
+        findViewById(R.id.app_list).setBackgroundColor(bg);
+        searchBox.setTextColor(textCol);
+        searchBox.setHintTextColor(hintCol);
+        adapter.setTextColor(textCol);
+        adapter.notifyDataSetChanged();
+
+        ClockView clockView = findViewById(R.id.clock_view);
+        clockView.applyTheme();
+    }
+
     @Override
     public void onBackPressed() {
         // suppress — this is the home screen
@@ -121,11 +143,11 @@ public class LauncherActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
+        applyTheme();
         loadApps();
         String q = searchBox.getText().toString();
         if (q.isEmpty()) adapter.updateList(new ArrayList<>(allApps));
         else filterApps(q);
-
         searchBox.requestFocus();
     }
 }

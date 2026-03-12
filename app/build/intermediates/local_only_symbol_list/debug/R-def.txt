@@ -4,7 +4,9 @@ drawable search_bar_bg
 id app_list
 id app_name
 id clock_view
+id root_layout
 id search_box
+id search_container
 layout activity_launcher
 layout item_app
 string app_name

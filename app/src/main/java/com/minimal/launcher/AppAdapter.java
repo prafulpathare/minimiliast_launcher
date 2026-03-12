@@ -12,10 +12,15 @@ import java.util.List;
 public class AppAdapter extends ArrayAdapter<AppInfo> {
 
     private final LayoutInflater inflater;
+    private int textColor = 0xFFDDDDDD;
 
     public AppAdapter(Context context, List<AppInfo> apps) {
         super(context, 0, apps);
         inflater = LayoutInflater.from(context);
+    }
+
+    public void setTextColor(int color) {
+        this.textColor = color;
     }
 
     public void updateList(List<AppInfo> apps) {
@@ -27,7 +32,6 @@ public class AppAdapter extends ArrayAdapter<AppInfo> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
-
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.item_app, parent, false);
             holder = new ViewHolder();
@@ -36,12 +40,11 @@ public class AppAdapter extends ArrayAdapter<AppInfo> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-
         AppInfo app = getItem(position);
         if (app != null) {
             holder.nameText.setText(app.label);
+            holder.nameText.setTextColor(textColor);
         }
-
         return convertView;
     }
 
