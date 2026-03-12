@@ -9,4 +9,6 @@
     android:paddingBottom="14dp"
     android:textColor="#DDDDDD"
     android:textSize="18sp"
-    android:background="@null" />
+    android:background="@null"
+    android:textFontWeight="500"
+    />

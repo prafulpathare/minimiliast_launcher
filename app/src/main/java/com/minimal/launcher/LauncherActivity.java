@@ -31,7 +31,7 @@ public class LauncherActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        listView  = findViewById(R.id.app_list);
+        listView = findViewById(R.id.app_list);
         searchBox = findViewById(R.id.search_box);
 
         loadApps();
@@ -47,16 +47,22 @@ public class LauncherActivity extends Activity {
         });
 
         searchBox.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void afterTextChanged(Editable s) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterApps(s.toString());
             }
         });
 
         searchBox.setOnEditorActionListener((v, actionId, event) -> {
-            if (actionId == EditorInfo.IME_ACTION_GO ||
-                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+            if (actionId == EditorInfo.IME_ACTION_GO || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                 if (adapter.getCount() > 0) launchApp(adapter.getItem(0));
                 return true;
             }
@@ -75,7 +81,7 @@ public class LauncherActivity extends Activity {
 
         allApps.clear();
         for (ResolveInfo info : resolveInfos) {
-            String label       = info.loadLabel(pm).toString().trim();
+            String label = info.loadLabel(pm).toString().trim();
             String packageName = info.activityInfo.packageName;
             if (!packageName.equals(getPackageName())) {
                 allApps.add(new AppInfo(label, packageName, info.activityInfo.name));
@@ -103,8 +109,7 @@ public class LauncherActivity extends Activity {
             Intent launch = new Intent(Intent.ACTION_MAIN);
             launch.addCategory(Intent.CATEGORY_LAUNCHER);
             launch.setClassName(app.packageName, app.activityName);
-            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK |
-                    Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
             startActivity(launch);
         } catch (Exception e) {
             Toast.makeText(this, "Cannot open " + app.label, Toast.LENGTH_SHORT).show();
@@ -112,22 +117,23 @@ public class LauncherActivity extends Activity {
     }
 
     private boolean isDarkTheme() {
-        int nightMode = getResources().getConfiguration().uiMode
-                & Configuration.UI_MODE_NIGHT_MASK;
+        int nightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         return nightMode == Configuration.UI_MODE_NIGHT_YES;
     }
 
     private void applyTheme() {
-        boolean dark    = isDarkTheme();
-        int bg          = dark ? 0xFF000000 : 0xFFFFFFFF;
-        int textCol     = dark ? 0xFFDDDDDD : 0xFF111111;
-        int hintCol     = dark ? 0xFF555555 : 0xFFAAAAAA;
-        int searchBg    = dark ? 0xFF111111 : 0xFFEEEEEE;
+        boolean dark = isDarkTheme();
+        int bg = dark ? 0xFF000000 : 0xFFFFFFFF;
+        int textCol = dark ? 0xFFDDDDDD : 0xFF111111;
+        int hintCol = dark ? 0xFF888888 : 0xFFAAAAAA;
+        int searchBg = dark ? 0xFF111111 : 0xFFEEEEEE;
 
         findViewById(R.id.root_layout).setBackgroundColor(bg);
         findViewById(R.id.app_list).setBackgroundColor(bg);
         searchBox.setTextColor(textCol);
         searchBox.setHintTextColor(hintCol);
+        findViewById(R.id.search_container).setBackgroundResource(dark ? R.drawable.search_bar_bg_night : R.drawable.search_bar_bg);
+
         adapter.setTextColor(textCol);
         adapter.notifyDataSetChanged();
 

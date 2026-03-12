@@ -1,6 +1,7 @@
 R_DEF: Internal format may change without notice
 local
 drawable search_bar_bg
+drawable search_bar_bg_night
 id app_list
 id app_name
 id clock_view

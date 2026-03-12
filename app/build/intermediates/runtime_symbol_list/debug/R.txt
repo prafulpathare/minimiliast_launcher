@@ -1,4 +1,5 @@
 int drawable search_bar_bg 0x7f010000
+int drawable search_bar_bg_night 0x7f010001
 int id app_list 0x7f020000
 int id app_name 0x7f020001
 int id clock_view 0x7f020002

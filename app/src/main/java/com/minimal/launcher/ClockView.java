@@ -131,6 +131,6 @@ public class ClockView extends View {
         datePaint.setTextAlign(Paint.Align.LEFT);
         datePaint.setTypeface(Build.VERSION.SDK_INT >= Build.VERSION_CODES.P ? Typeface.create(Typeface.DEFAULT, 500, false) : Typeface.DEFAULT);
 
-        canvas.drawText(dateStr, paddingLeft,  20 + timeY + (-fm.ascent) * 0.15f + dateTextSize, datePaint);
+        canvas.drawText(dateStr, paddingLeft * 2,  20 + timeY + (-fm.ascent) * 0.15f + dateTextSize, datePaint);
     }
 }

@@ -28,13 +28,14 @@
         android:paddingStart="14dp"
         android:paddingEnd="14dp"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:layout_gravity="center_vertical"
+        >
 
         <EditText
             android:id="@+id/search_box"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:lineHeight="50dp"
+            android:layout_height="30dp"
             android:layout_weight="1"
             android:hint="Search..."
             android:textColor="#FFFFFF"
@@ -44,8 +45,7 @@
             android:inputType="text"
             android:imeOptions="actionGo"
             android:singleLine="true"
-            android:padding="0dp"
-            android:gravity="left"
+            android:paddingHorizontal="6dp"
             android:textFontWeight="700"
             />
 
