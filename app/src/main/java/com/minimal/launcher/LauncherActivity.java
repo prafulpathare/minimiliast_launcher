@@ -1,10 +1,15 @@
 package com.minimal.launcher;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
+import android.os.BatteryManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,7 +17,7 @@ import android.view.KeyEvent;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -21,30 +26,32 @@ import java.util.List;
 
 public class LauncherActivity extends Activity {
 
-    private ListView listView;
-    private EditText searchBox;
+    private LinearLayout appContainer;
     private AppAdapter adapter;
+
+    private EditText searchBox;
     private List<AppInfo> allApps = new ArrayList<>();
+
+    private BatteryView batteryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
 
-        listView = findViewById(R.id.app_list);
+        appContainer = findViewById(R.id.app_list);
+        adapter = new AppAdapter(this, new ArrayList<>(allApps));
+        adapter.setOnAppClickListener(this::launchApp);
+        adapter.rebind(appContainer);
+
+        batteryView = findViewById(R.id.battery_view);
+        registerBatteryReceiver();
+
         searchBox = findViewById(R.id.search_box);
 
         loadApps();
 
-        adapter = new AppAdapter(this, new ArrayList<>(allApps));
-        listView.setAdapter(adapter);
-
         applyTheme();
-
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            AppInfo app = adapter.getItem(position);
-            if (app != null) launchApp(app);
-        });
 
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
@@ -73,6 +80,23 @@ public class LauncherActivity extends Activity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
     }
 
+    private void registerBatteryReceiver() {
+        IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        registerReceiver(batteryReceiver, filter);
+    }
+
+    private final BroadcastReceiver batteryReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+            if (level >= 0 && scale > 0) {
+                float pct = (level / (float) scale) * 100f;
+                batteryView.setBatteryLevel(pct);
+            }
+        }
+    };
+
     private void loadApps() {
         PackageManager pm = getPackageManager();
         Intent intent = new Intent(Intent.ACTION_MAIN, null);
@@ -84,7 +108,8 @@ public class LauncherActivity extends Activity {
             String label = info.loadLabel(pm).toString().trim();
             String packageName = info.activityInfo.packageName;
             if (!packageName.equals(getPackageName())) {
-                allApps.add(new AppInfo(label, packageName, info.activityInfo.name));
+                Drawable icon = info.loadIcon(pm);
+                allApps.add(new AppInfo(label, packageName, info.activityInfo.name, icon));
             }
         }
         Collections.sort(allApps, (a, b) -> a.label.compareToIgnoreCase(b.label));
@@ -96,7 +121,7 @@ public class LauncherActivity extends Activity {
         for (AppInfo app : allApps) {
             if (app.label.toLowerCase().contains(lower)) filtered.add(app);
         }
-        adapter.updateList(filtered);
+        adapter.updateList(filtered, appContainer);
 
         if (filtered.size() == 1 && !lower.isEmpty()) {
             launchApp(filtered.get(0));
@@ -135,7 +160,7 @@ public class LauncherActivity extends Activity {
         findViewById(R.id.search_container).setBackgroundResource(dark ? R.drawable.search_bar_bg_night : R.drawable.search_bar_bg);
 
         adapter.setTextColor(textCol);
-        adapter.notifyDataSetChanged();
+        adapter.rebind(appContainer);
 
         ClockView clockView = findViewById(R.id.clock_view);
         clockView.applyTheme();
@@ -151,9 +176,17 @@ public class LauncherActivity extends Activity {
         super.onResume();
         applyTheme();
         loadApps();
+
         String q = searchBox.getText().toString();
-        if (q.isEmpty()) adapter.updateList(new ArrayList<>(allApps));
+        if (q.isEmpty()) adapter.updateList(new ArrayList<>(allApps), appContainer);
         else filterApps(q);
+
         searchBox.requestFocus();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(batteryReceiver);
     }
 }

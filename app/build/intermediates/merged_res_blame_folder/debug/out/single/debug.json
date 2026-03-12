@@ -1,18 +1,22 @@
 [
     {
-        "merged": "com.minimal.launcher.app-merged_res-4:/drawable_search_bar_bg_night.xml.flat",
-        "source": "com.minimal.launcher.app-main-6:/drawable/search_bar_bg_night.xml"
+        "merged": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-merged_res-4:\\drawable_search_bar_bg_night.xml.flat",
+        "source": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-main-6:\\drawable\\search_bar_bg_night.xml"
     },
     {
         "merged": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-merged_res-4:\\layout_item_app.xml.flat",
         "source": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-main-6:\\layout\\item_app.xml"
     },
     {
-        "merged": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-merged_res-4:\\drawable_search_bar_bg.xml.flat",
-        "source": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-main-6:\\drawable\\search_bar_bg.xml"
+        "merged": "com.minimal.launcher.app-merged_res-4:/layout_activity_launcher.xml.flat",
+        "source": "com.minimal.launcher.app-main-6:/layout/activity_launcher.xml"
     },
     {
         "merged": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-merged_res-4:\\layout_activity_launcher.xml.flat",
         "source": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-main-6:\\layout\\activity_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-merged_res-4:\\drawable_search_bar_bg.xml.flat",
+        "source": "C:\\Users\\praful\\.gradle\\daemon\\8.2\\com.minimal.launcher.app-main-6:\\drawable\\search_bar_bg.xml"
     }
 ]

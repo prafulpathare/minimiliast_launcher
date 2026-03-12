@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/app_name"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="88dp"
     android:layout_height="wrap_content"
-    android:paddingStart="34dp"
-    android:paddingEnd="20dp"
-    android:paddingTop="14dp"
-    android:paddingBottom="14dp"
-    android:textColor="#DDDDDD"
-    android:textSize="18sp"
-    android:background="@null"
-    android:textFontWeight="500"
-    />
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingStart="6dp"
+    android:paddingEnd="6dp">
+
+    <ImageView
+        android:id="@+id/app_icon"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:scaleType="fitCenter" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:textColor="#DDDDDD"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:background="@null" />
+
+</LinearLayout>
