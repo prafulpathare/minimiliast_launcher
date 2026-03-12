@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.minimal.launcher.app-mergeDebugResources-2:/values/values.xml",
+            "map": [
+                {
+                    "source": "D:\\ws\\projects\\MinimalLauncher\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "53",
+                        "endOffsets": "104"
+                    }
+                },
+                {
+                    "source": "D:\\ws\\projects\\MinimalLauncher\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "12",
+                        "endColumns": "12",
+                        "endOffsets": "687"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "109",
+                        "endLines": "13",
+                        "endColumns": "12",
+                        "endOffsets": "741"
+                    }
+                }
+            ]
+        }
+    ]
+}

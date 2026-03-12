@@ -1,0 +1,11 @@
+R_DEF: Internal format may change without notice
+local
+drawable search_bar_bg
+id app_list
+id app_name
+id clock_view
+id search_box
+layout activity_launcher
+layout item_app
+string app_name
+style LauncherTheme

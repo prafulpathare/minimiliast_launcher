@@ -1,0 +1,7 @@
+#Thu Mar 12 14:54:28 IST 2026
+base.0=D\:\\ws\\projects\\MinimalLauncher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.1=D\:\\ws\\projects\\MinimalLauncher\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+path.0=0/classes.dex
+path.1=4/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex

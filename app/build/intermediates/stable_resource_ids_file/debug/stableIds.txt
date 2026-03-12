@@ -1,0 +1,9 @@
+com.minimal.launcher:style/LauncherTheme = 0x7f050000
+com.minimal.launcher:string/app_name = 0x7f040000
+com.minimal.launcher:layout/activity_launcher = 0x7f030000
+com.minimal.launcher:id/search_box = 0x7f020003
+com.minimal.launcher:id/app_name = 0x7f020001
+com.minimal.launcher:id/clock_view = 0x7f020002
+com.minimal.launcher:layout/item_app = 0x7f030001
+com.minimal.launcher:id/app_list = 0x7f020000
+com.minimal.launcher:drawable/search_bar_bg = 0x7f010000

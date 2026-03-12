@@ -1,0 +1,4 @@
+com.minimal.launcher.test.app-androidTest-0 D:\ws\projects\MinimalLauncher\app\build\generated\res\resValues\androidTest\debug
+com.minimal.launcher.test.app-mergeDebugAndroidTestResources-1 D:\ws\projects\MinimalLauncher\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.minimal.launcher.test.app-mergeDebugAndroidTestResources-2 D:\ws\projects\MinimalLauncher\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.minimal.launcher.test.app-merged_res-3 D:\ws\projects\MinimalLauncher\app\build\intermediates\merged_res\debugAndroidTest
