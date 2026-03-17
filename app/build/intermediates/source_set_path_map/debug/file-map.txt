@@ -1,7 +1,0 @@
-com.minimal.launcher.app-pngs-0 D:\ws\projects\MinimalLauncher\app\build\generated\res\pngs\debug
-com.minimal.launcher.app-resValues-1 D:\ws\projects\MinimalLauncher\app\build\generated\res\resValues\debug
-com.minimal.launcher.app-packageDebugResources-2 D:\ws\projects\MinimalLauncher\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.minimal.launcher.app-packageDebugResources-3 D:\ws\projects\MinimalLauncher\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.minimal.launcher.app-merged_res-4 D:\ws\projects\MinimalLauncher\app\build\intermediates\merged_res\debug
-com.minimal.launcher.app-debug-5 D:\ws\projects\MinimalLauncher\app\src\debug\res
-com.minimal.launcher.app-main-6 D:\ws\projects\MinimalLauncher\app\src\main\res
