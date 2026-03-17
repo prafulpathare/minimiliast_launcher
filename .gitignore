@@ -1,0 +1,50 @@
+# Gradle
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Local config (SDK path, etc.)
+local.properties
+
+# IDE files
+.idea/
+*.iml
+
+# Android Studio navigation/editor temp files
+.navigation/
+captures/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# APK / AAB outputs
+*.apk
+*.aab
+
+# Generated files
+*.class
+*.dex
+
+# External native build
+.externalNativeBuild/
+.cxx/
+
+# Keystore files (IMPORTANT: never commit)
+*.jks
+*.keystore
+
+# Firebase / Google Services (optional, depends on your use)
+google-services.json
+
+# Kotlin / Java temp
+out/
+
+# NDK
+obj/
+
+# Misc
+*.hprof
